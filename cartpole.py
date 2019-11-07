@@ -73,9 +73,6 @@ class DQN:
             mean_score = np.mean(scores)
             rewards.append(mean_score)
             # print('Rewards per episode: {}'.format(mean_score))
-            # TODO
-            # The reward for each training episode while training your agent?
-            # The reward per trial for 100 trials using your trained agent?
 
             if mean_score >= 195 and e >= 100:  # TODO n_win_ticks ?
                 print('Ran {} episodes. Solved after {} trials'.format(e, e - 100))
@@ -83,7 +80,6 @@ class DQN:
             if e % 100 == 0:
                 print('[Episode {}] - Mean survival time over last 100 episodes was {} ticks.'.format(e, mean_score))
 
-            # TODO why?
             self.replay(self.batch_size)
 
         print('Did not solve after {} episodes'.format(e))
