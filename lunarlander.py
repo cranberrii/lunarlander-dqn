@@ -145,10 +145,6 @@ class DQN:
                 totalreward += reward  # total reward for ONE episode
                 i += 1
 
-            # TODO:
-            # The reward for each training episode while training your agent?
-            # The reward per trial for 100 trials using your trained agent?
-
             print("episode:", e, "iters:", i, "epsilon", self.epsilon, "total reward:", totalreward)
             total_episodes.append(e)
             total_steps.append(i)
@@ -198,8 +194,6 @@ class DQN:
                 totalreward += reward  # total reward for ONE episode
                 i += 1
 
-            # TODO:
-            # The reward per trial for 100 trials using your trained agent?
             print("episode:", e, "iters:", i, "epsilon", epsilon, "total reward:", totalreward)
             total_episodes.append(e)
             total_steps.append(i)
@@ -213,12 +207,7 @@ class DQN:
 
         return total_rewards
 
-
-    # TODO
-    # The effect of hyperparameters (alpha, lambda , epsilon) on your agent
-    # You pick the ranges
-    # Be prepared to explain why you chose them
-
+    
     def plot_running_avg(self, tot_rewards):
         N = len(tot_rewards)
         running_avg = np.empty(N)
@@ -233,9 +222,6 @@ class DQN:
         plt.ylabel('reward', size=14)
         plt.rc('xtick', labelsize=14)  # fontsize of the tick labels
         plt.rc('ytick', labelsize=14)  # fontsize of the tick labels
-        fig.text(0.9, 0.1, 'zbek3@gatech.edu',
-                 fontsize=35, color='gray',
-                 ha='right', va='bottom', alpha=0.33)
         plt.show()
         # plt.savefig()
 
@@ -250,9 +236,6 @@ class DQN:
         plt.ylabel('reward', size=14)
         plt.rc('xtick', labelsize=14)  # fontsize of the tick labels
         plt.rc('ytick', labelsize=14)  # fontsize of the tick labels
-        fig.text(0.9, 0.1, 'zbek3@gatech.edu',
-                 fontsize=35, color='gray',
-                 ha='right', va='bottom', alpha=0.33)
         plt.show()
         # plt.savefig()
 
@@ -264,14 +247,14 @@ if __name__ == '__main__':
     agent = DQN()
     # agent.random_agent()
 
-    # TR = agent.run()
-    # agent.plot_training_reward(TR)
-    # agent.plot_running_avg(TR)
+    TR = agent.run()
+    agent.plot_training_reward(TR)
+    agent.plot_running_avg(TR)
 
     # mp = 'saved_models/lunarlander.dqn.1000.2019-10-27_19:59:52.h5'
-    mp = 'saved_models/lunarlander.dqn.700.2019-10-27-17:26:35.h5'
-    test_tr = agent.test_dqn_agent(model_path=mp, episodes=100, epsilon=0.13, render=False)
-    agent.plot_training_reward(test_tr)
-    agent.plot_running_avg(test_tr)
+#     mp = 'saved_models/lunarlander.dqn.700.2019-10-27-17:26:35.h5'
+#     test_tr = agent.test_dqn_agent(model_path=mp, episodes=100, epsilon=0.13, render=False)
+#     agent.plot_training_reward(test_tr)
+#     agent.plot_running_avg(test_tr)
 
     print('total elapsed time:', datetime.now() - start)
